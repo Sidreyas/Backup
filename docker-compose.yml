@@ -1,0 +1,34 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: meridian
+      POSTGRES_PASSWORD: meridian
+      POSTGRES_DB: meridian
+    # 5433 on the host: a locally-installed Postgres commonly already holds
+    # 5432, and when it does it wins the bind while Docker still reports the
+    # mapping as published — so the connection succeeds against the wrong
+    # server and fails on authentication. Using a distinct port avoids
+    # interfering with an existing install.
+    ports:
+      - "5433:5432"
+    volumes:
+      - meridian-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U meridian -d meridian"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  meridian-pgdata:

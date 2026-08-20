@@ -1,0 +1,128 @@
+{
+  "hkg_annual_leave": [
+    {
+      "accrual": "HKG Annual Leave Accrual",
+      "calculation": "HKG Annual Leave Days Entitlement",
+      "calculationType": "Lookup Calculation",
+      "lookupTable": "Annual Leave Accrual (Hong Kong)",
+      "searchCriteria": "Worker Years of Service (based on Hire Date) as of Period Start Date",
+      "note": "",
+      "tableGrids": [
+        {
+          "headers": [
+            "Search Value",
+            "Return Value"
+          ],
+          "rows": [
+            [
+              "1",
+              "7"
+            ],
+            [
+              "3",
+              "8"
+            ],
+            [
+              "4",
+              "9"
+            ],
+            [
+              "5",
+              "10"
+            ],
+            [
+              "6",
+              "11"
+            ],
+            [
+              "7",
+              "12"
+            ],
+            [
+              "8",
+              "13"
+            ],
+            [
+              "9",
+              "14"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "gbr_statutory_holiday": [
+    {
+      "accrual": "GBR Statutory Holiday (Days) Accrual",
+      "calculation": "GBR Statutory Holiday Annual Accrual Calculation",
+      "calculationType": "Conditional Calculation",
+      "lookupTable": "",
+      "searchCriteria": "",
+      "note": "calculation is not a lookup \u2014 no table to read",
+      "calculationGrids": [
+        {
+          "headers": [
+            "Calculation Condition",
+            "Order",
+            "Condition",
+            "Result"
+          ],
+          "rows": [
+            [
+              "",
+              "a",
+              "Worker: Hire Date <= Current Calendar Year Start Date (based on Period End Date)",
+              "UK Statutory 28 days prorated based on FTE%"
+            ],
+            [
+              "",
+              "b",
+              "Worker: Current Calendar Year Hire Date (Not Terminated in Current Period)",
+              "GBR Statutory Holiday Entitlement for Mid Year Hire"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "accrual": "GBR Statutory Holiday (Days) Termination Accrual",
+      "calculation": "GBR Statutory Holiday Entitlement for Mid Year Termination (inc Mid Year Hire)",
+      "calculationType": "Conditional Calculation",
+      "lookupTable": "",
+      "searchCriteria": "",
+      "note": "calculation is not a lookup \u2014 no table to read",
+      "calculationGrids": [
+        {
+          "headers": [
+            "Calculation Condition",
+            "Order",
+            "Condition",
+            "Result"
+          ],
+          "rows": [
+            [
+              "",
+              "a",
+              "Worker: Hire Date <= Current Calendar Year Start Date (based on Period End Date)",
+              "GBR Statutory Holiday Entitlement Decision for Mid Year Termination"
+            ],
+            [
+              "",
+              "b",
+              "Worker: Hire Date > Current Calendar Year Start Date (based on Period End Date)",
+              "GBR Statutory Holiday Entitlement Decision for Mid Year Hire and Termination"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "accrual": "GBR Vacation Buy (Days)",
+      "calculation": "0",
+      "calculationType": "",
+      "lookupTable": "",
+      "searchCriteria": "",
+      "note": "literal amount: 0"
+    }
+  ]
+}

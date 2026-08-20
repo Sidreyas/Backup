@@ -1,0 +1,170 @@
+{
+  "hkg_annual_leave": [
+    {
+      "name": "HKG Annual Leave Accrual",
+      "grids": [
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Calculation",
+            "Priority",
+            "Allow Input",
+            "Front-Loaded",
+            "Based on As of Date",
+            "Or None",
+            "Rounding",
+            "Amount of Time to Roll Back",
+            "Unit of Time to Roll Back",
+            "Include Calculation Tags",
+            "Scheduling",
+            "Time Calculation Tags"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "HKG Annual Leave Days Entitlement",
+              "1",
+              "Yes",
+              "No",
+              "No",
+              "Yes",
+              "",
+              "",
+              "",
+              "",
+              "Scheduling: Annual - 1st Period of Calendar Year (based on Period End Date) or Mid-Period Hire"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "gbr_statutory_holiday": [
+    {
+      "name": "GBR Statutory Holiday (Days) Accrual",
+      "grids": [
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Calculation",
+            "Priority",
+            "Allow Input",
+            "Front-Loaded",
+            "Based on As of Date",
+            "Or None",
+            "Rounding",
+            "Amount of Time to Roll Back",
+            "Unit of Time to Roll Back",
+            "Include Calculation Tags",
+            "Time Calculation Tags",
+            "Scheduling"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "GBR Statutory Holiday Annual Accrual Calculation",
+              "7",
+              "Yes",
+              "Yes",
+              "No",
+              "No",
+              "",
+              "",
+              "",
+              "",
+              "Scheduling: Front-Loaded"
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "Scheduling: Worker Hired Mid-Period"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GBR Statutory Holiday (Days) Termination Accrual",
+      "grids": [
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Calculation",
+            "Priority",
+            "Allow Input",
+            "Front-Loaded",
+            "Based on As of Date",
+            "Or None",
+            "Rounding",
+            "Amount of Time to Roll Back",
+            "Unit of Time to Roll Back",
+            "Include Calculation Tags",
+            "Scheduling",
+            "Time Calculation Tags"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "GBR Statutory Holiday Entitlement for Mid Year Termination (inc Mid Year Hire)",
+              "50",
+              "No",
+              "No",
+              "No",
+              "Yes",
+              "",
+              "",
+              "",
+              "",
+              "Worker: Terminated Mid-Period"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GBR Vacation Buy (Days)",
+      "grids": [
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Calculation",
+            "Priority",
+            "Allow Input",
+            "Front-Loaded",
+            "Based on As of Date",
+            "Or None",
+            "Rounding",
+            "Amount of Time to Roll Back",
+            "Unit of Time to Roll Back",
+            "Include Calculation Tags",
+            "Time Calculation Tags"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "0",
+              "100",
+              "Yes",
+              "No",
+              "No",
+              "Yes",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

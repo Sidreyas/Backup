@@ -1,0 +1,453 @@
+[
+  {
+    "kind": "config_object",
+    "naturalKey": "workday:timeoffplan:HKG_ANNUAL_LEAVE",
+    "label": "HKG_ANNUAL_LEAVE",
+    "payload": {
+      "planType": "",
+      "unitOfTime": "",
+      "balancePeriod": "",
+      "carryoverLimit": "0",
+      "carryoverExpiry": "",
+      "maximumBalance": "",
+      "minimumIncrement": "",
+      "country": "Hong Kong",
+      "inactive": false,
+      "complex": true,
+      "accrualCount": 1,
+      "eligibilityCount": 1,
+      "via": "screen+screen",
+      "summary": "HKG_ANNUAL_LEAVE applies to: Worker Location = Hong Kong. HKG Annual Leave Accrual: 1007 units rising to 814 units, by worker years of service (based on hire date) as of period start date, Annual - 1st Period of Calendar Year (based on Period End Date) or Mid-Period Hire. Unused balance does not carry over. Not yet known: unit of time (days or hours).",
+      "summaryGaps": [
+        "unit of time (days or hours)"
+      ],
+      "summaryComplete": false
+    },
+    "sourceRef": "",
+    "provenance": "Workday \u203a Time Off Plan \u203a HKG_ANNUAL_LEAVE",
+    "layer": "configuration",
+    "observedAt": "2026-08-19T07:41:14.538251+00:00",
+    "relations": [
+      [
+        "CONFIGURES",
+        "workday:org:hong-kong"
+      ]
+    ]
+  },
+  {
+    "kind": "config_object",
+    "naturalKey": "workday:org:hong-kong",
+    "label": "Hong Kong",
+    "payload": {
+      "kind": "country",
+      "source": "absence"
+    },
+    "sourceRef": "",
+    "provenance": "Workday \u203a Country \u203a Hong Kong",
+    "layer": "configuration",
+    "observedAt": "2026-08-19T07:41:14.538317+00:00",
+    "relations": []
+  },
+  {
+    "kind": "config_object",
+    "naturalKey": "workday:timeoffplan:HKG_ANNUAL_LEAVE:accrual:hkg-annual-leave-accrual",
+    "label": "HKG Annual Leave Accrual",
+    "payload": {
+      "amount": "",
+      "unit": "",
+      "frequency": "Annual - 1st Period of Calendar Year (based on Period End Date) or Mid-Period Hire",
+      "condition": "",
+      "calculation": "HKG Annual Leave Days Entitlement",
+      "isCalculated": true,
+      "effectiveDate": ""
+    },
+    "sourceRef": "",
+    "provenance": "Workday \u203a Accrual \u203a HKG_ANNUAL_LEAVE \u203a HKG Annual Leave Accrual",
+    "layer": "configuration",
+    "observedAt": "2026-08-19T07:41:14.538364+00:00",
+    "relations": [
+      [
+        "HAS_STEP",
+        "workday:timeoffplan:HKG_ANNUAL_LEAVE"
+      ],
+      [
+        "DEPENDS_ON",
+        "workday:field:hkg-annual-leave-days-entitlement"
+      ]
+    ]
+  },
+  {
+    "kind": "data_entity",
+    "naturalKey": "workday:field:hkg-annual-leave-days-entitlement",
+    "label": "HKG Annual Leave Days Entitlement",
+    "payload": {
+      "calculationType": "Lookup Calculation",
+      "resolved": true,
+      "criteria": "Worker Years of Service (based on Hire Date) as of Period Start Date",
+      "branches": []
+    },
+    "sourceRef": "",
+    "provenance": "Workday \u203a Calculated Field \u203a HKG Annual Leave Days Entitlement",
+    "layer": "configuration",
+    "observedAt": "2026-08-19T07:41:14.538471+00:00",
+    "relations": [
+      [
+        "DEPENDS_ON",
+        "workday:lookup:annual-leave-accrual-hong-kong"
+      ]
+    ]
+  },
+  {
+    "kind": "data_entity",
+    "naturalKey": "workday:lookup:annual-leave-accrual-hong-kong",
+    "label": "Annual Leave Accrual (Hong Kong)",
+    "payload": {
+      "keyedOn": "Worker Years of Service (based on Hire Date) as of Period Start Date",
+      "bands": [
+        {
+          "search": "1",
+          "result": "1007"
+        },
+        {
+          "search": "3",
+          "result": "2008"
+        },
+        {
+          "search": "4",
+          "result": "39"
+        },
+        {
+          "search": "5",
+          "result": "410"
+        },
+        {
+          "search": "6",
+          "result": "511"
+        },
+        {
+          "search": "7",
+          "result": "612"
+        },
+        {
+          "search": "8",
+          "result": "713"
+        },
+        {
+          "search": "9",
+          "result": "814"
+        }
+      ],
+      "bandCount": 8
+    },
+    "sourceRef": "",
+    "provenance": "Workday \u203a Lookup Table \u203a Annual Leave Accrual (Hong Kong)",
+    "layer": "configuration",
+    "observedAt": "2026-08-19T07:41:14.538490+00:00",
+    "relations": []
+  },
+  {
+    "kind": "config_object",
+    "naturalKey": "workday:eligibility:worker-location-hong-kong",
+    "label": "Worker Location = Hong Kong",
+    "payload": {
+      "criteria": "Worker Location = Hong Kong",
+      "references": [
+        "Employee",
+        "Hong Kong"
+      ]
+    },
+    "sourceRef": "",
+    "provenance": "Workday \u203a Eligibility \u203a Worker Location = Hong Kong",
+    "layer": "configuration",
+    "observedAt": "2026-08-19T07:41:14.538513+00:00",
+    "relations": [
+      [
+        "SECURED_BY",
+        "workday:timeoffplan:HKG_ANNUAL_LEAVE"
+      ]
+    ]
+  },
+  {
+    "kind": "config_object",
+    "naturalKey": "workday:timeoffplan:GBR_STATUTORY_HOLIDAY",
+    "label": "GBR_STATUTORY_HOLIDAY",
+    "payload": {
+      "planType": "",
+      "unitOfTime": "",
+      "balancePeriod": "",
+      "carryoverLimit": "5",
+      "carryoverExpiry": "3 Months",
+      "maximumBalance": "33",
+      "minimumIncrement": "",
+      "country": "United Kingdom",
+      "inactive": false,
+      "complex": true,
+      "accrualCount": 3,
+      "eligibilityCount": 2,
+      "via": "screen+screen",
+      "summary": "GBR_STATUTORY_HOLIDAY applies to workers meeting any of: (1) In Salaried Compensation Plan and Worker: Terminated Mid-Period and Worker's Company = UK as of PS Date and Worker Employee Type is Regular or Fixed Term Contract as of PS Date. (2) In Salaried Compensation Plan and Worker's Company = UK as of PE Date and Worker Employee Type is Regular or Fixed Term Contract as of PE Date. GBR Statutory Holiday (Days) Accrual: UK Statutory 28 days prorated based on FTE% when Worker: Hire Date <= Current Calendar Year Start Date (based on Period End Date); GBR Statutory Holiday Entitlement for Mid Year Hire when Worker: Current Calendar Year Hire Date (Not Terminated in Current Period), Start of Period. GBR Statutory Holiday (Days) Termination Accrual: GBR Statutory Holiday Entitlement Decision for Mid Year Termination when Worker: Hire Date <= Current Calendar Year Start Date (based on Period End Date); GBR Statutory Holiday Entitlement Decision for Mid Year Hire and Termination when Worker: Hire Date > Current Calendar Year Start Date (based on Period End Date), Worker: Terminated Mid-Period. GBR Vacation Buy (Days): 0 units, Start of Period (this accrual has a different accrual frequency). Up to 5 units carry over, expiring after 3 Months. Balance is capped at 33 units. Not yet known: unit of time (days or hours), what 'GBR Statutory Holiday Entitlement for Mid Year Hire' evaluates to, what 'GBR Statutory Holiday Entitlement Decision for Mid Year Termination' evaluates to, what 'GBR Statutory Holiday Entitlement Decision for Mid Year Hire and Termination' evaluates to.",
+      "summaryGaps": [
+        "unit of time (days or hours)",
+        "what 'GBR Statutory Holiday Entitlement for Mid Year Hire' evaluates to",
+        "what 'GBR Statutory Holiday Entitlement Decision for Mid Year Termination' evaluates to",
+        "what 'GBR Statutory Holiday Entitlement Decision for Mid Year Hire and Termination' evaluates to"
+      ],
+      "summaryComplete": false
+    },
+    "sourceRef": "",
+    "provenance": "Workday \u203a Time Off Plan \u203a GBR_STATUTORY_HOLIDAY",
+    "layer": "configuration",
+    "observedAt": "2026-08-19T07:41:14.538744+00:00",
+    "relations": [
+      [
+        "CONFIGURES",
+        "workday:org:united-kingdom"
+      ]
+    ]
+  },
+  {
+    "kind": "config_object",
+    "naturalKey": "workday:org:united-kingdom",
+    "label": "United Kingdom",
+    "payload": {
+      "kind": "country",
+      "source": "absence"
+    },
+    "sourceRef": "",
+    "provenance": "Workday \u203a Country \u203a United Kingdom",
+    "layer": "configuration",
+    "observedAt": "2026-08-19T07:41:14.538764+00:00",
+    "relations": []
+  },
+  {
+    "kind": "config_object",
+    "naturalKey": "workday:timeoffplan:GBR_STATUTORY_HOLIDAY:accrual:gbr-statutory-holiday-days-accrual",
+    "label": "GBR Statutory Holiday (Days) Accrual",
+    "payload": {
+      "amount": "",
+      "unit": "",
+      "frequency": "Start of Period",
+      "condition": "",
+      "calculation": "GBR Statutory Holiday Annual Accrual Calculation",
+      "isCalculated": true,
+      "effectiveDate": ""
+    },
+    "sourceRef": "",
+    "provenance": "Workday \u203a Accrual \u203a GBR_STATUTORY_HOLIDAY \u203a GBR Statutory Holiday (Days) Accrual",
+    "layer": "configuration",
+    "observedAt": "2026-08-19T07:41:14.538806+00:00",
+    "relations": [
+      [
+        "HAS_STEP",
+        "workday:timeoffplan:GBR_STATUTORY_HOLIDAY"
+      ],
+      [
+        "DEPENDS_ON",
+        "workday:field:gbr-statutory-holiday-annual-accrual-calculation"
+      ]
+    ]
+  },
+  {
+    "kind": "data_entity",
+    "naturalKey": "workday:field:gbr-statutory-holiday-annual-accrual-calculation",
+    "label": "GBR Statutory Holiday Annual Accrual Calculation",
+    "payload": {
+      "calculationType": "Conditional Calculation",
+      "resolved": true,
+      "criteria": "",
+      "branches": [
+        {
+          "order": "a",
+          "condition": "Worker: Hire Date <= Current Calendar Year Start Date (based on Period End Date)",
+          "result": "UK Statutory 28 days prorated based on FTE%"
+        },
+        {
+          "order": "b",
+          "condition": "Worker: Current Calendar Year Hire Date (Not Terminated in Current Period)",
+          "result": "GBR Statutory Holiday Entitlement for Mid Year Hire"
+        }
+      ]
+    },
+    "sourceRef": "",
+    "provenance": "Workday \u203a Calculated Field \u203a GBR Statutory Holiday Annual Accrual Calculation",
+    "layer": "configuration",
+    "observedAt": "2026-08-19T07:41:14.538877+00:00",
+    "relations": [
+      [
+        "DEPENDS_ON",
+        "workday:field:gbr-statutory-holiday-entitlement-for-mid-year-hire"
+      ]
+    ]
+  },
+  {
+    "kind": "data_entity",
+    "naturalKey": "workday:field:gbr-statutory-holiday-entitlement-for-mid-year-hire",
+    "label": "GBR Statutory Holiday Entitlement for Mid Year Hire",
+    "payload": {
+      "resolved": false,
+      "referencedBy": "GBR Statutory Holiday Annual Accrual Calculation"
+    },
+    "sourceRef": "",
+    "provenance": "Workday \u203a Calculated Field \u203a GBR Statutory Holiday Entitlement for Mid Year Hire (referenced)",
+    "layer": "configuration",
+    "observedAt": "2026-08-19T07:41:14.538896+00:00",
+    "relations": []
+  },
+  {
+    "kind": "config_object",
+    "naturalKey": "workday:timeoffplan:GBR_STATUTORY_HOLIDAY:accrual:gbr-statutory-holiday-days-termination-accrual",
+    "label": "GBR Statutory Holiday (Days) Termination Accrual",
+    "payload": {
+      "amount": "",
+      "unit": "",
+      "frequency": "Worker: Terminated Mid-Period",
+      "condition": "",
+      "calculation": "GBR Statutory Holiday Entitlement for Mid Year Termination (inc Mid Year Hire)",
+      "isCalculated": true,
+      "effectiveDate": ""
+    },
+    "sourceRef": "",
+    "provenance": "Workday \u203a Accrual \u203a GBR_STATUTORY_HOLIDAY \u203a GBR Statutory Holiday (Days) Termination Accrual",
+    "layer": "configuration",
+    "observedAt": "2026-08-19T07:41:14.538948+00:00",
+    "relations": [
+      [
+        "HAS_STEP",
+        "workday:timeoffplan:GBR_STATUTORY_HOLIDAY"
+      ],
+      [
+        "DEPENDS_ON",
+        "workday:field:gbr-statutory-holiday-entitlement-for-mid-year-termination-inc-mid-year-hire"
+      ]
+    ]
+  },
+  {
+    "kind": "data_entity",
+    "naturalKey": "workday:field:gbr-statutory-holiday-entitlement-for-mid-year-termination-inc-mid-year-hire",
+    "label": "GBR Statutory Holiday Entitlement for Mid Year Termination (inc Mid Year Hire)",
+    "payload": {
+      "calculationType": "Conditional Calculation",
+      "resolved": true,
+      "criteria": "",
+      "branches": [
+        {
+          "order": "a",
+          "condition": "Worker: Hire Date <= Current Calendar Year Start Date (based on Period End Date)",
+          "result": "GBR Statutory Holiday Entitlement Decision for Mid Year Termination"
+        },
+        {
+          "order": "b",
+          "condition": "Worker: Hire Date > Current Calendar Year Start Date (based on Period End Date)",
+          "result": "GBR Statutory Holiday Entitlement Decision for Mid Year Hire and Termination"
+        }
+      ]
+    },
+    "sourceRef": "",
+    "provenance": "Workday \u203a Calculated Field \u203a GBR Statutory Holiday Entitlement for Mid Year Termination (inc Mid Year Hire)",
+    "layer": "configuration",
+    "observedAt": "2026-08-19T07:41:14.539036+00:00",
+    "relations": [
+      [
+        "DEPENDS_ON",
+        "workday:field:gbr-statutory-holiday-entitlement-decision-for-mid-year-termination"
+      ],
+      [
+        "DEPENDS_ON",
+        "workday:field:gbr-statutory-holiday-entitlement-decision-for-mid-year-hire-and-termination"
+      ]
+    ]
+  },
+  {
+    "kind": "data_entity",
+    "naturalKey": "workday:field:gbr-statutory-holiday-entitlement-decision-for-mid-year-termination",
+    "label": "GBR Statutory Holiday Entitlement Decision for Mid Year Termination",
+    "payload": {
+      "resolved": false,
+      "referencedBy": "GBR Statutory Holiday Entitlement for Mid Year Termination (inc Mid Year Hire)"
+    },
+    "sourceRef": "",
+    "provenance": "Workday \u203a Calculated Field \u203a GBR Statutory Holiday Entitlement Decision for Mid Year Termination (referenced)",
+    "layer": "configuration",
+    "observedAt": "2026-08-19T07:41:14.539060+00:00",
+    "relations": []
+  },
+  {
+    "kind": "data_entity",
+    "naturalKey": "workday:field:gbr-statutory-holiday-entitlement-decision-for-mid-year-hire-and-termination",
+    "label": "GBR Statutory Holiday Entitlement Decision for Mid Year Hire and Termination",
+    "payload": {
+      "resolved": false,
+      "referencedBy": "GBR Statutory Holiday Entitlement for Mid Year Termination (inc Mid Year Hire)"
+    },
+    "sourceRef": "",
+    "provenance": "Workday \u203a Calculated Field \u203a GBR Statutory Holiday Entitlement Decision for Mid Year Hire and Termination (referenced)",
+    "layer": "configuration",
+    "observedAt": "2026-08-19T07:41:14.539084+00:00",
+    "relations": []
+  },
+  {
+    "kind": "config_object",
+    "naturalKey": "workday:timeoffplan:GBR_STATUTORY_HOLIDAY:accrual:gbr-vacation-buy-days",
+    "label": "GBR Vacation Buy (Days)",
+    "payload": {
+      "amount": "0",
+      "unit": "",
+      "frequency": "Start of Period",
+      "condition": "this accrual has a different accrual frequency",
+      "calculation": "",
+      "isCalculated": false,
+      "effectiveDate": ""
+    },
+    "sourceRef": "",
+    "provenance": "Workday \u203a Accrual \u203a GBR_STATUTORY_HOLIDAY \u203a GBR Vacation Buy (Days)",
+    "layer": "configuration",
+    "observedAt": "2026-08-19T07:41:14.539107+00:00",
+    "relations": [
+      [
+        "HAS_STEP",
+        "workday:timeoffplan:GBR_STATUTORY_HOLIDAY"
+      ]
+    ]
+  },
+  {
+    "kind": "config_object",
+    "naturalKey": "workday:eligibility:in-salaried-compensation-plan",
+    "label": "In Salaried Compensation Plan",
+    "payload": {
+      "criteria": "In Salaried Compensation Plan and Worker: Terminated Mid-Period and Worker's Company = UK as of PS Date and Worker Employee Type is Regular or Fixed Term Contract as of PS Date",
+      "references": [
+        "Employee",
+        "United Kingdom"
+      ]
+    },
+    "sourceRef": "",
+    "provenance": "Workday \u203a Eligibility \u203a In Salaried Compensation Plan",
+    "layer": "configuration",
+    "observedAt": "2026-08-19T07:41:14.539128+00:00",
+    "relations": [
+      [
+        "SECURED_BY",
+        "workday:timeoffplan:GBR_STATUTORY_HOLIDAY"
+      ]
+    ]
+  },
+  {
+    "kind": "config_object",
+    "naturalKey": "workday:eligibility:in-salaried-compensation-plan",
+    "label": "In Salaried Compensation Plan",
+    "payload": {
+      "criteria": "In Salaried Compensation Plan and Worker's Company = UK as of PE Date and Worker Employee Type is Regular or Fixed Term Contract as of PE Date",
+      "references": []
+    },
+    "sourceRef": "",
+    "provenance": "Workday \u203a Eligibility \u203a In Salaried Compensation Plan",
+    "layer": "configuration",
+    "observedAt": "2026-08-19T07:41:14.539141+00:00",
+    "relations": [
+      [
+        "SECURED_BY",
+        "workday:timeoffplan:GBR_STATUTORY_HOLIDAY"
+      ]
+    ]
+  }
+]

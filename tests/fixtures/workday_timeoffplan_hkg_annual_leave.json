@@ -1,0 +1,391 @@
+{
+  "key": "hkg_annual_leave",
+  "task": "View Time Off Plan",
+  "tabs": [
+    "Balance",
+    "Calculation",
+    "Accruals",
+    "Time Offs",
+    "Eligibility"
+  ],
+  "tabs_detail": {
+    "Balance": {
+      "grids": [
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Balance Visibility for Time Off Plan",
+            "Calendar Display",
+            "Allow Input",
+            "Carryover Date",
+            "Carryover Limit"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Eligible in period (based on As of Date)",
+              "Plan and Type",
+              "Yes",
+              "First Period of Balance Period Start Date",
+              "0"
+            ]
+          ]
+        }
+      ]
+    },
+    "Calculation": {
+      "grids": [
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Balance Visibility for Time Off Plan",
+            "Calendar Display",
+            "Allow Input",
+            "Carryover Date",
+            "Carryover Limit"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Eligible in period (based on As of Date)",
+              "Plan and Type",
+              "Yes",
+              "First Period of Balance Period Start Date",
+              "0"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Accrual Frequency Method",
+            "First Accrual Date",
+            "Accrual Recurs Every",
+            "Accrual Recurs Unit of Time",
+            "Time Off Plan Balance Lower Limit",
+            "Time Off Plan Balance Upper Limit",
+            "Days to Include",
+            "Use Scheduling Shifts",
+            "Restrict Requests to Days to Include on Calendar",
+            "Daily Quantity Default"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Start of Period",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "Workdays (Non-Holiday)",
+              "No",
+              "No",
+              "1"
+            ]
+          ]
+        }
+      ]
+    },
+    "Accruals": {
+      "grids": [
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Balance Visibility for Time Off Plan",
+            "Calendar Display",
+            "Allow Input",
+            "Carryover Date",
+            "Carryover Limit"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Eligible in period (based on As of Date)",
+              "Plan and Type",
+              "Yes",
+              "First Period of Balance Period Start Date",
+              "0"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Accrual Frequency Method",
+            "First Accrual Date",
+            "Accrual Recurs Every",
+            "Accrual Recurs Unit of Time",
+            "Time Off Plan Balance Lower Limit",
+            "Time Off Plan Balance Upper Limit",
+            "Days to Include",
+            "Use Scheduling Shifts",
+            "Restrict Requests to Days to Include on Calendar",
+            "Daily Quantity Default"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Start of Period",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "Workdays (Non-Holiday)",
+              "No",
+              "No",
+              "1"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Adds to Balance",
+            "Effective-Dated Snapshot",
+            "Accrual Frequency Override Exists",
+            "Eligibility Override Exists",
+            "Upper Limit Override Exists",
+            "Expiration Override Exists"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "HKG Annual Leave Accrual",
+              "HKG Annual Leave Accrual effective as of Initial Snapshot",
+              "No",
+              "No",
+              "No",
+              "No"
+            ]
+          ]
+        }
+      ]
+    },
+    "Time Offs": {
+      "grids": [
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Balance Visibility for Time Off Plan",
+            "Calendar Display",
+            "Allow Input",
+            "Carryover Date",
+            "Carryover Limit"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Eligible in period (based on As of Date)",
+              "Plan and Type",
+              "Yes",
+              "First Period of Balance Period Start Date",
+              "0"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Accrual Frequency Method",
+            "First Accrual Date",
+            "Accrual Recurs Every",
+            "Accrual Recurs Unit of Time",
+            "Time Off Plan Balance Lower Limit",
+            "Time Off Plan Balance Upper Limit",
+            "Days to Include",
+            "Use Scheduling Shifts",
+            "Restrict Requests to Days to Include on Calendar",
+            "Daily Quantity Default"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Start of Period",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "Workdays (Non-Holiday)",
+              "No",
+              "No",
+              "1"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Adds to Balance",
+            "Effective-Dated Snapshot",
+            "Accrual Frequency Override Exists",
+            "Eligibility Override Exists",
+            "Upper Limit Override Exists",
+            "Expiration Override Exists"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "HKG Annual Leave Accrual",
+              "HKG Annual Leave Accrual effective as of Initial Snapshot",
+              "No",
+              "No",
+              "No",
+              "No"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Time Off",
+            "Time Off for Balance Transfer Adjustment",
+            "Time Off for Termination Adjustment",
+            "Time Off for Forfeiture Adjustment",
+            "Subtracts from Balance",
+            "Effective-Dated Snapshot",
+            "Eligibility Override Exists",
+            "Lower Limit Override Exists",
+            "Default Quantity Override Exists"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "HKG Annual Leave",
+              "HKG Annual Leave effective as of Initial Snapshot",
+              "No",
+              "No",
+              "No",
+              "",
+              "",
+              ""
+            ]
+          ]
+        }
+      ]
+    },
+    "Eligibility": {
+      "grids": [
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Balance Visibility for Time Off Plan",
+            "Calendar Display",
+            "Allow Input",
+            "Carryover Date",
+            "Carryover Limit"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Eligible in period (based on As of Date)",
+              "Plan and Type",
+              "Yes",
+              "First Period of Balance Period Start Date",
+              "0"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Accrual Frequency Method",
+            "First Accrual Date",
+            "Accrual Recurs Every",
+            "Accrual Recurs Unit of Time",
+            "Time Off Plan Balance Lower Limit",
+            "Time Off Plan Balance Upper Limit",
+            "Days to Include",
+            "Use Scheduling Shifts",
+            "Restrict Requests to Days to Include on Calendar",
+            "Daily Quantity Default"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Start of Period",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "Workdays (Non-Holiday)",
+              "No",
+              "No",
+              "1"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Adds to Balance",
+            "Effective-Dated Snapshot",
+            "Accrual Frequency Override Exists",
+            "Eligibility Override Exists",
+            "Upper Limit Override Exists",
+            "Expiration Override Exists"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "HKG Annual Leave Accrual",
+              "HKG Annual Leave Accrual effective as of Initial Snapshot",
+              "No",
+              "No",
+              "No",
+              "No"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Time Off",
+            "Time Off for Balance Transfer Adjustment",
+            "Time Off for Termination Adjustment",
+            "Time Off for Forfeiture Adjustment",
+            "Subtracts from Balance",
+            "Effective-Dated Snapshot",
+            "Eligibility Override Exists",
+            "Lower Limit Override Exists",
+            "Default Quantity Override Exists"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "HKG Annual Leave",
+              "HKG Annual Leave effective as of Initial Snapshot",
+              "No",
+              "No",
+              "No",
+              "",
+              "",
+              ""
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Enabled for Worker Type Plan Eligibility",
+            "Country / Country Region",
+            "Country / Country Region Enabled for All Positions",
+            "Worker Eligibility"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Employee",
+              "Hong Kong",
+              "",
+              "Worker Location = Hong Kong"
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}

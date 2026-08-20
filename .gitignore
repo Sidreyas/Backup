@@ -1,0 +1,42 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Raw Workday tenant probe output — contains live session state and
+# tenant-specific data. The distilled, safe subset lives in tests/fixtures/.
+tmp_absence_probe/
+
+# Environment files. `.env` holds real credentials — the encryption key, the
+# model API key, connector tokens — and `.env.local` holds per-machine Vite
+# overrides. `.env.example` is the committed template and is exempt.
+.env
+.env.*
+!.env.example
+
+# Python build and test caches. Regenerated on every run, and committing them
+# adds churn with no history worth keeping.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/

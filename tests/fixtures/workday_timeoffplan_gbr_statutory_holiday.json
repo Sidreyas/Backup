@@ -1,0 +1,516 @@
+{
+  "key": "gbr_statutory_holiday",
+  "task": "View Time Off Plan",
+  "tabs": [
+    "Balance",
+    "Calculation",
+    "Accruals",
+    "Time Offs",
+    "Eligibility"
+  ],
+  "tabs_detail": {
+    "Balance": {
+      "grids": [
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Balance Visibility for Time Off Plan",
+            "Calendar Display",
+            "Allow Input",
+            "Carryover Date",
+            "Carryover Limit",
+            "Amount of Time Before Carryover Expiration",
+            "Carryover Expires Unit of Time"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Eligible in period (based on As of Date)",
+              "Plan and Type",
+              "Yes",
+              "First Period of Balance Period Start Date",
+              "5",
+              "3",
+              "Months"
+            ]
+          ]
+        }
+      ]
+    },
+    "Calculation": {
+      "grids": [
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Balance Visibility for Time Off Plan",
+            "Calendar Display",
+            "Allow Input",
+            "Carryover Date",
+            "Carryover Limit",
+            "Amount of Time Before Carryover Expiration",
+            "Carryover Expires Unit of Time"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Eligible in period (based on As of Date)",
+              "Plan and Type",
+              "Yes",
+              "First Period of Balance Period Start Date",
+              "5",
+              "3",
+              "Months"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Accrual Frequency Method",
+            "First Accrual Date",
+            "Accrual Recurs Every",
+            "Accrual Recurs Unit of Time",
+            "Time Off Plan Balance Lower Limit",
+            "Time Off Plan Balance Upper Limit",
+            "Days to Include",
+            "Use Scheduling Shifts",
+            "Restrict Requests to Days to Include on Calendar",
+            "Daily Quantity Default"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Start of Period",
+              "",
+              "",
+              "",
+              "0",
+              "33",
+              "Workdays (Non-Holiday)",
+              "No",
+              "No",
+              "1"
+            ]
+          ]
+        }
+      ]
+    },
+    "Accruals": {
+      "grids": [
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Balance Visibility for Time Off Plan",
+            "Calendar Display",
+            "Allow Input",
+            "Carryover Date",
+            "Carryover Limit",
+            "Amount of Time Before Carryover Expiration",
+            "Carryover Expires Unit of Time"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Eligible in period (based on As of Date)",
+              "Plan and Type",
+              "Yes",
+              "First Period of Balance Period Start Date",
+              "5",
+              "3",
+              "Months"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Accrual Frequency Method",
+            "First Accrual Date",
+            "Accrual Recurs Every",
+            "Accrual Recurs Unit of Time",
+            "Time Off Plan Balance Lower Limit",
+            "Time Off Plan Balance Upper Limit",
+            "Days to Include",
+            "Use Scheduling Shifts",
+            "Restrict Requests to Days to Include on Calendar",
+            "Daily Quantity Default"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Start of Period",
+              "",
+              "",
+              "",
+              "0",
+              "33",
+              "Workdays (Non-Holiday)",
+              "No",
+              "No",
+              "1"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Adds to Balance",
+            "Effective-Dated Snapshot",
+            "Accrual Frequency Override Exists",
+            "Eligibility Override Exists",
+            "Upper Limit Override Exists",
+            "Expiration Override Exists"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "GBR Statutory Holiday (Days) Accrual",
+              "GBR Statutory Holiday (Days) Accrual effective as of Initial Snapshot",
+              "No",
+              "No",
+              "No",
+              "No"
+            ],
+            [
+              "",
+              "GBR Statutory Holiday (Days) Termination Accrual",
+              "GBR Statutory Holiday (Days) Termination Accrual effective as of Initial Snapshot",
+              "No",
+              "No",
+              "No",
+              "No"
+            ],
+            [
+              "",
+              "GBR Vacation Buy (Days)",
+              "GBR Vacation Buy (Days) effective as of Initial Snapshot",
+              "Yes",
+              "No",
+              "No",
+              "No"
+            ]
+          ]
+        }
+      ]
+    },
+    "Time Offs": {
+      "grids": [
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Balance Visibility for Time Off Plan",
+            "Calendar Display",
+            "Allow Input",
+            "Carryover Date",
+            "Carryover Limit",
+            "Amount of Time Before Carryover Expiration",
+            "Carryover Expires Unit of Time"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Eligible in period (based on As of Date)",
+              "Plan and Type",
+              "Yes",
+              "First Period of Balance Period Start Date",
+              "5",
+              "3",
+              "Months"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Accrual Frequency Method",
+            "First Accrual Date",
+            "Accrual Recurs Every",
+            "Accrual Recurs Unit of Time",
+            "Time Off Plan Balance Lower Limit",
+            "Time Off Plan Balance Upper Limit",
+            "Days to Include",
+            "Use Scheduling Shifts",
+            "Restrict Requests to Days to Include on Calendar",
+            "Daily Quantity Default"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Start of Period",
+              "",
+              "",
+              "",
+              "0",
+              "33",
+              "Workdays (Non-Holiday)",
+              "No",
+              "No",
+              "1"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Adds to Balance",
+            "Effective-Dated Snapshot",
+            "Accrual Frequency Override Exists",
+            "Eligibility Override Exists",
+            "Upper Limit Override Exists",
+            "Expiration Override Exists"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "GBR Statutory Holiday (Days) Accrual",
+              "GBR Statutory Holiday (Days) Accrual effective as of Initial Snapshot",
+              "No",
+              "No",
+              "No",
+              "No"
+            ],
+            [
+              "",
+              "GBR Statutory Holiday (Days) Termination Accrual",
+              "GBR Statutory Holiday (Days) Termination Accrual effective as of Initial Snapshot",
+              "No",
+              "No",
+              "No",
+              "No"
+            ],
+            [
+              "",
+              "GBR Vacation Buy (Days)",
+              "GBR Vacation Buy (Days) effective as of Initial Snapshot",
+              "Yes",
+              "No",
+              "No",
+              "No"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Time Off",
+            "Time Off for Balance Transfer Adjustment",
+            "Time Off for Termination Adjustment",
+            "Time Off for Forfeiture Adjustment",
+            "Subtracts from Balance",
+            "Effective-Dated Snapshot",
+            "Eligibility Override Exists",
+            "Lower Limit Override Exists",
+            "Default Quantity Override Exists"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "GBR Statutory Holiday Time Off",
+              "GBR Statutory Holiday Time Off effective as of Initial Snapshot",
+              "No",
+              "No",
+              "No",
+              "",
+              "GBR Statutory Holiday Time Off Adjustment",
+              ""
+            ],
+            [
+              "",
+              "GBR Statutory Holiday Time Off Adjustment",
+              "GBR Statutory Holiday Time Off Adjustment effective as of Initial Snapshot",
+              "No",
+              "No",
+              "No",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "GBR Vacation Sell (Days)",
+              "GBR Vacation Sell (Days) effective as of Initial Snapshot",
+              "No",
+              "No",
+              "No",
+              "",
+              "",
+              ""
+            ]
+          ]
+        }
+      ]
+    },
+    "Eligibility": {
+      "grids": [
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Balance Visibility for Time Off Plan",
+            "Calendar Display",
+            "Allow Input",
+            "Carryover Date",
+            "Carryover Limit",
+            "Amount of Time Before Carryover Expiration",
+            "Carryover Expires Unit of Time"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Eligible in period (based on As of Date)",
+              "Plan and Type",
+              "Yes",
+              "First Period of Balance Period Start Date",
+              "5",
+              "3",
+              "Months"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Accrual Frequency Method",
+            "First Accrual Date",
+            "Accrual Recurs Every",
+            "Accrual Recurs Unit of Time",
+            "Time Off Plan Balance Lower Limit",
+            "Time Off Plan Balance Upper Limit",
+            "Days to Include",
+            "Use Scheduling Shifts",
+            "Restrict Requests to Days to Include on Calendar",
+            "Daily Quantity Default"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Start of Period",
+              "",
+              "",
+              "",
+              "0",
+              "33",
+              "Workdays (Non-Holiday)",
+              "No",
+              "No",
+              "1"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Adds to Balance",
+            "Effective-Dated Snapshot",
+            "Accrual Frequency Override Exists",
+            "Eligibility Override Exists",
+            "Upper Limit Override Exists",
+            "Expiration Override Exists"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "GBR Statutory Holiday (Days) Accrual",
+              "GBR Statutory Holiday (Days) Accrual effective as of Initial Snapshot",
+              "No",
+              "No",
+              "No",
+              "No"
+            ],
+            [
+              "",
+              "GBR Statutory Holiday (Days) Termination Accrual",
+              "GBR Statutory Holiday (Days) Termination Accrual effective as of Initial Snapshot",
+              "No",
+              "No",
+              "No",
+              "No"
+            ],
+            [
+              "",
+              "GBR Vacation Buy (Days)",
+              "GBR Vacation Buy (Days) effective as of Initial Snapshot",
+              "Yes",
+              "No",
+              "No",
+              "No"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Time Off",
+            "Time Off for Balance Transfer Adjustment",
+            "Time Off for Termination Adjustment",
+            "Time Off for Forfeiture Adjustment",
+            "Subtracts from Balance",
+            "Effective-Dated Snapshot",
+            "Eligibility Override Exists",
+            "Lower Limit Override Exists",
+            "Default Quantity Override Exists"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "GBR Statutory Holiday Time Off",
+              "GBR Statutory Holiday Time Off effective as of Initial Snapshot",
+              "No",
+              "No",
+              "No",
+              "",
+              "GBR Statutory Holiday Time Off Adjustment",
+              ""
+            ],
+            [
+              "",
+              "GBR Statutory Holiday Time Off Adjustment",
+              "GBR Statutory Holiday Time Off Adjustment effective as of Initial Snapshot",
+              "No",
+              "No",
+              "No",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "GBR Vacation Sell (Days)",
+              "GBR Vacation Sell (Days) effective as of Initial Snapshot",
+              "No",
+              "No",
+              "No",
+              "",
+              "",
+              ""
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Effective-Dated Snapshot",
+            "Enabled for Worker Type Plan Eligibility",
+            "Country / Country Region",
+            "Country / Country Region Enabled for All Positions",
+            "Worker Eligibility"
+          ],
+          "rows": [
+            [
+              "Snapshot effective as of Initial Snapshot",
+              "Employee",
+              "United Kingdom",
+              "",
+              "In Salaried Compensation Plan\nWorker: Terminated Mid-Period\nWorker's Company = UK as of PS Date\nWorker Employee Type is Regular or Fixed Term Contract as of PS Date"
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "In Salaried Compensation Plan\nWorker's Company = UK as of PE Date\nWorker Employee Type is Regular or Fixed Term Contract as of PE Date"
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}

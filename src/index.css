@@ -1,0 +1,624 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+/* Tailwind v4: opt into class-based dark mode driven by <html class="dark"> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+   Design tokens — semantic, theme-aware.
+
+   Visual language: the application fills the viewport edge to edge. Hierarchy
+   comes from borders and tonal steps, not shadows. The primary interactive
+   colour is near-black rather than a brand hue, which frees the entire
+   chromatic range to mean status and nothing else — exactly what a governance
+   console needs.
+--------------------------------------------------------------------------- */
+@theme {
+  /* One family only. Technical strings (ids, paths, hashes) stay in Inter and
+     are differentiated by tabular figures + letter-spacing, not a second face. */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* NOTE: never define named --spacing-<name> keys here. In Tailwind v4 that
+     namespace also backs the named max-width and width sizes, so a token like
+     "--spacing-2xl: 3rem" silently turns max-w-2xl into 48px. The default 4px
+     spacing scale already provides the 4/8px rhythm this design system needs. */
+
+  /* Container scale backing max-w-sm … max-w-7xl. Declared explicitly because
+     this @theme block otherwise leaves the namespace empty. */
+  --container-xs: 20rem;
+  --container-sm: 24rem;
+  --container-md: 28rem;
+  --container-lg: 32rem;
+  --container-xl: 36rem;
+  --container-2xl: 42rem;
+  --container-3xl: 48rem;
+  --container-4xl: 56rem;
+  --container-5xl: 64rem;
+  --container-6xl: 72rem;
+  --container-7xl: 80rem;
+
+  /* z-index scale — no arbitrary values anywhere in the app */
+  --z-base: 0;
+  --z-sticky: 10;
+  --z-dropdown: 20;
+  --z-drawer: 30;
+  --z-modal: 40;
+  --z-toast: 50;
+}
+
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  /*
+   * The canvas behind cards. Deliberately a step darker than --bg-surface so
+   * white cards read as raised panels rather than dissolving into the page.
+   *
+   * Kept a shade darker than --bg-surface-2 (the recessed band *inside* a
+   * card): when the two matched, a card's grey body merged with the canvas and
+   * the card appeared to have a hole in it.
+   */
+  --bg-page: #eeeef0;
+
+  --bg-base: #eeeef0;
+  --bg-surface: #ffffff;
+  /*
+   * The recessed band inside a card — KPI number wells, table headers, inset
+   * bodies. #fafafa was only 2% off white and the step read as a rendering
+   * artefact rather than a deliberate tone; this is the reference's clearly
+   * separate grey while staying well inside AA for text placed on it.
+   */
+  --bg-surface-2: #f5f5f6;
+  --bg-surface-3: #ececee;
+  --bg-inset: #f5f5f6;
+  /* Darker than --bg-base, not lighter: hover on a sidebar row sits directly
+     on the canvas, and a lighter tint made hovering look like a highlight
+     lifting off the page rather than the row being pressed into it. */
+  --bg-hover: #e6e6e9;
+  --bg-active: #dcdce0;
+
+  --text-primary: #171717;
+  --text-secondary: #525252;
+  --text-tertiary: #8f8f8f;
+  --text-inverse: #ffffff;
+
+  --border-subtle: #e7e7e9;
+  --border-default: #dcdce0;
+  --border-strong: #c4c4c9;
+
+  /*
+   * Blue primary, used sparingly: primary buttons, the active selection, and
+   * focus rings. Status colour still outranks it — a red breach or a green pass
+   * must never be competing with brand colour for the same attention.
+   *
+   * --accent-subtle is only faintly tinted. A saturated selection background
+   * would put blue behind whole rows and turn an accent into a theme.
+   */
+  --accent: #1b58c8;
+  --accent-hover: #17489f;
+  --accent-subtle: #eff4fe;
+  --accent-border: #cfe0fb;
+  --accent-text: #1a4fb0;
+  --accent-on: #ffffff;
+
+  /*
+   * Emphasis — the near-black "Add funds" / "Connect" button in the reference.
+   * A second weight of primary that carries no hue, so it can sit beside a blue
+   * CTA without the two competing to be the one obvious action.
+   */
+  --emphasis: #1c1c1c;
+  --emphasis-hover: #333333;
+  --emphasis-on: #ffffff;
+
+  /* Status — each has a subtle bg, a border and an AA-contrast text tone */
+  --ok: #15803d;
+  --ok-subtle: #f0fdf4;
+  --ok-border: #bbf7d0;
+  --ok-solid: #22c55e;
+
+  --warn: #b45309;
+  --warn-subtle: #fffbeb;
+  --warn-border: #fde68a;
+  --warn-solid: #f59e0b;
+
+  --danger: #b91c1c;
+  --danger-subtle: #fef2f2;
+  --danger-border: #fecaca;
+  --danger-solid: #ef4444;
+
+  /*
+   * Informational status is teal, not blue. Blue is now the primary interaction
+   * colour, and an "info" chip in the same hue would read as a button — the one
+   * confusion the old violet accent existed to prevent.
+   */
+  --info: #0e7490;
+  --info-subtle: #ecfeff;
+  --info-border: #a5f3fc;
+  --info-solid: #06b6d4;
+
+  --neutral: #525252;
+  --neutral-subtle: #f5f5f5;
+  --neutral-border: #e5e5e5;
+  --neutral-solid: #8f8f8f;
+
+  /*
+   * Categorical series — the blue / orange / green / purple of the reference's
+   * campaign breakdown. Ordered by how often a series appears, so the first
+   * category is always the calmest. These carry no status meaning: they only
+   * distinguish one series from another, which is why they are separate tokens
+   * from --ok / --warn / --danger rather than reusing them.
+   */
+  --cat-1: #2563eb;
+  --cat-2: #e8933a;
+  --cat-3: #10a37f;
+  --cat-4: #8b5cf6;
+  --cat-5: #ec4899;
+  --cat-6: #64748b;
+
+  /* Evidence-grade semantics: verified is a stronger claim than asserted */
+  --verified: #15803d;
+  --verified-subtle: #f0fdf4;
+  --verified-border: #bbf7d0;
+  --asserted: #b45309;
+  --asserted-subtle: #fffbeb;
+  --asserted-border: #fde68a;
+
+  /*
+   * Brand marks — the Meridian logo and the workspace tile.
+   *
+   * Deliberately NOT --accent. Violet is the interaction colour: it means
+   * selected, focused, actionable. Two permanent violet squares at the top of
+   * the sidebar read as two selected things, which is exactly what the accent
+   * is supposed to signal and never does here. A near-black tile identifies
+   * without claiming to be interactive.
+   */
+  --brand: #1c1c1c;
+  --brand-on: #ffffff;
+
+  /* Chart neutrals — bars are quiet until one is highlighted */
+  --chart-track: #ebebeb;
+  --chart-highlight: #1c1c1c;
+  --chart-grid: #ededed;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.04);
+  --shadow-md: 0 2px 6px -1px rgb(0 0 0 / 0.06), 0 1px 3px -1px rgb(0 0 0 / 0.04);
+  --shadow-lg: 0 8px 20px -6px rgb(0 0 0 / 0.1), 0 3px 8px -4px rgb(0 0 0 / 0.06);
+  --shadow-xl: 0 20px 40px -12px rgb(0 0 0 / 0.16), 0 8px 16px -8px rgb(0 0 0 / 0.08);
+  --shadow-shell: 0 1px 3px rgb(0 0 0 / 0.06), 0 8px 32px -8px rgb(0 0 0 / 0.08);
+
+  --scrim: rgb(23 23 23 / 0.4);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg-page: #0f0f10;
+
+  --bg-base: #0f0f10;
+  --bg-surface: #191919;
+  --bg-surface-2: #1f1f1f;
+  --bg-surface-3: #262626;
+  --bg-inset: #121212;
+  --bg-hover: #232323;
+  --bg-active: #2c2c2c;
+
+  --text-primary: #f5f5f5;
+  --text-secondary: #b4b4b4;
+  --text-tertiary: #7d7d7d;
+  --text-inverse: #171717;
+
+  --border-subtle: #262626;
+  --border-default: #303030;
+  --border-strong: #444444;
+
+  /* Lifted on dark so it clears the AA contrast floor against #0f0f10. */
+  --accent: #4a86ee;
+  --accent-hover: #6b9ff3;
+  --accent-subtle: #16233d;
+  --accent-border: #24406b;
+  --accent-text: #93b8f8;
+  --accent-on: #0b1220;
+
+  /*
+   * Inverted on dark: the near-black tile of light mode becomes the lightest
+   * surface, keeping "emphasis" as the heaviest weight available in both
+   * themes rather than something that disappears into the page.
+   */
+  --emphasis: #f5f5f5;
+  --emphasis-hover: #e0e0e0;
+  --emphasis-on: #171717;
+
+  /* Dark mode uses lighter, desaturated tonal variants — not inverted values */
+  --ok: #4ade80;
+  --ok-subtle: #0d2818;
+  --ok-border: #1c5236;
+  --ok-solid: #22c55e;
+
+  --warn: #fbbf24;
+  --warn-subtle: #2a1e08;
+  --warn-border: #59431a;
+  --warn-solid: #f59e0b;
+
+  --danger: #f87171;
+  --danger-subtle: #2c1414;
+  --danger-border: #5e2626;
+  --danger-solid: #ef4444;
+
+  --info: #22d3ee;
+  --info-subtle: #082f36;
+  --info-border: #155e69;
+  --info-solid: #06b6d4;
+
+  --neutral: #b4b4b4;
+  --neutral-subtle: #222222;
+  --neutral-border: #333333;
+  --neutral-solid: #7d7d7d;
+
+  /* Lightened so each series clears 3:1 against the dark canvas */
+  --cat-1: #60a5fa;
+  --cat-2: #f0a95c;
+  --cat-3: #34d399;
+  --cat-4: #a78bfa;
+  --cat-5: #f472b6;
+  --cat-6: #94a3b8;
+
+  --verified: #4ade80;
+  --verified-subtle: #0d2818;
+  --verified-border: #1c5236;
+  --asserted: #fbbf24;
+  --asserted-subtle: #2a1e08;
+  --asserted-border: #59431a;
+
+  /*
+   * Dark mode lifts the tile off the background rather than inverting it to
+   * white: a white square is the brightest thing on a dark page and would pull
+   * the eye to a logo, which is not where attention belongs.
+   */
+  --brand: #3a3a3a;
+  --brand-on: #fafafa;
+
+  --chart-track: #2c2c2c;
+  --chart-highlight: #f5f5f5;
+  --chart-grid: #262626;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.5);
+  --shadow-md: 0 2px 6px -1px rgb(0 0 0 / 0.6), 0 1px 3px -1px rgb(0 0 0 / 0.5);
+  --shadow-lg: 0 8px 20px -6px rgb(0 0 0 / 0.7), 0 3px 8px -4px rgb(0 0 0 / 0.5);
+  --shadow-xl: 0 20px 40px -12px rgb(0 0 0 / 0.85), 0 8px 16px -8px rgb(0 0 0 / 0.6);
+  --shadow-shell: 0 1px 3px rgb(0 0 0 / 0.5), 0 8px 32px -8px rgb(0 0 0 / 0.4);
+
+  --scrim: rgb(0 0 0 / 0.7);
+}
+
+/* Expose tokens as Tailwind utilities (bg-surface, text-secondary, ...)
+ *
+ * Names here enter Tailwind's *colour* namespace, and a colour named `x` makes
+ * `text-x` a colour utility. If `x` also names a font-size step, the colour
+ * wins and silently overrides the size.
+ *
+ * `--color-base` did exactly that: it turned `text-base` into
+ * `color: var(--bg-base)`, painting every 16px heading in the page background
+ * colour — invisible on the surface it sat on. It is removed rather than
+ * renamed because nothing used the `base`/`page` colour utilities; the
+ * background tokens are reached via `bg-[var(--bg-page)]`.
+ *
+ * Do not add a colour whose name collides with a built-in scale step
+ * (`base`, `sm`, `lg`, `xl`, ...). This is the same trap as the spacing
+ * namespace, and it fails silently in both cases.
+ */
+@theme inline {
+  --color-surface: var(--bg-surface);
+  --color-surface-2: var(--bg-surface-2);
+  --color-surface-3: var(--bg-surface-3);
+  --color-inset: var(--bg-inset);
+  --color-hover: var(--bg-hover);
+  --color-active: var(--bg-active);
+
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-tertiary: var(--text-tertiary);
+  --color-inverse: var(--text-inverse);
+
+  --color-subtle: var(--border-subtle);
+  --color-default: var(--border-default);
+  --color-strong: var(--border-strong);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-accent-border: var(--accent-border);
+  --color-accent-text: var(--accent-text);
+
+  --color-emphasis: var(--emphasis);
+  --color-emphasis-hover: var(--emphasis-hover);
+
+  --color-cat-1: var(--cat-1);
+  --color-cat-2: var(--cat-2);
+  --color-cat-3: var(--cat-3);
+  --color-cat-4: var(--cat-4);
+  --color-cat-5: var(--cat-5);
+  --color-cat-6: var(--cat-6);
+
+  --color-ok: var(--ok);
+  --color-ok-subtle: var(--ok-subtle);
+  --color-ok-border: var(--ok-border);
+  --color-ok-solid: var(--ok-solid);
+
+  --color-warn: var(--warn);
+  --color-warn-subtle: var(--warn-subtle);
+  --color-warn-border: var(--warn-border);
+  --color-warn-solid: var(--warn-solid);
+
+  --color-danger: var(--danger);
+  --color-danger-subtle: var(--danger-subtle);
+  --color-danger-border: var(--danger-border);
+  --color-danger-solid: var(--danger-solid);
+
+  --color-info: var(--info);
+  --color-info-subtle: var(--info-subtle);
+  --color-info-border: var(--info-border);
+  --color-info-solid: var(--info-solid);
+
+  --color-neutral: var(--neutral);
+  --color-neutral-subtle: var(--neutral-subtle);
+  --color-neutral-border: var(--neutral-border);
+  --color-neutral-solid: var(--neutral-solid);
+
+  --color-verified: var(--verified);
+  --color-verified-subtle: var(--verified-subtle);
+  --color-verified-border: var(--verified-border);
+  --color-asserted: var(--asserted);
+  --color-asserted-subtle: var(--asserted-subtle);
+  --color-asserted-border: var(--asserted-border);
+
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+}
+
+@layer base {
+  * {
+    border-color: var(--border-subtle);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    background-color: var(--bg-page);
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: -0.011em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  /* Display numerals carry tighter tracking, matching the reference's KPIs */
+  .numeral {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.03em;
+  }
+
+  /* Numeric columns must not jitter as values change */
+  .tabular,
+  table td,
+  table th {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* "Mono" slots keep Inter but adopt tabular figures and slightly open
+     tracking, which reads as technical without introducing a second family. */
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-on);
+  }
+
+  /* Scrollbars that read as part of the surface, in both themes */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--border-default);
+    border-radius: 6px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--border-strong);
+  }
+}
+
+/*
+ * Durations are deliberately short. Above roughly 150ms an entrance stops
+ * reading as responsiveness and starts reading as latency — the interface
+ * appears to be thinking when it has already finished. The easing curve does
+ * the work of making movement feel considered; the duration only decides how
+ * long someone waits to interact.
+ */
+@layer utilities {
+  .animate-in {
+    animation: fade-in-up 120ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-scale-in {
+    animation: scale-in 110ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-slide-in-right {
+    /* Longest of the four, and rightly: it travels the furthest, and a panel
+       that snaps in from the edge is disorienting rather than fast. */
+    animation: slide-in-right 160ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-fade {
+    animation: fade 100ms ease-out both;
+  }
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--bg-surface-2) 0%,
+      var(--bg-surface-3) 50%,
+      var(--bg-surface-2) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.4s ease-in-out infinite;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/*
+ * Disclosure open. Animates grid-template-rows rather than height so the
+ * content measures itself — a fixed max-height either clips a long list or
+ * leaves the tail of the animation running against empty space.
+ */
+@keyframes expand-rows {
+  from {
+    grid-template-rows: 0fr;
+    opacity: 0;
+  }
+  to {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+}
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+/*
+ * Words resolve out of blur as they stream in. The blur is what makes a word
+ * read as "arriving" rather than "appended" — a plain fade at this duration
+ * looks like a rendering glitch.
+ */
+/*
+ * One word resolving as it arrives.
+ *
+ * The blur is deliberately slight. At 4px it was tuned for a 420ms fade; over
+ * the ~90ms the reveal now takes, that much blur resolves too fast to read as
+ * softening and instead flickers. 2px reads as a word settling rather than a
+ * word flashing.
+ */
+@keyframes stream-in {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    filter: none;
+  }
+}
+
+/* Honour the OS reduced-motion setting everywhere, including chart entrances */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*
+ * Print.
+ *
+ * The export preview offers a Print action; without these rules the browser
+ * would print the entire app shell around the document. Everything is hidden
+ * except the previewed article, which is then unpinned from its scroll box so
+ * it can paginate naturally.
+ */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  [data-doc-preview],
+  [data-doc-preview] * {
+    visibility: visible;
+  }
+
+  [data-doc-preview] {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    max-width: none;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  /* Long documents should break between sections, not mid-heading. */
+  [data-doc-preview] section {
+    break-inside: avoid;
+  }
+}

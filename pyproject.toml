@@ -1,0 +1,59 @@
+[project]
+name = "meridian-api"
+version = "0.1.0"
+description = "Meridian backend — the system of record for enterprise change."
+requires-python = ">=3.13"
+
+dependencies = [
+    "fastapi>=0.118",
+    "uvicorn[standard]>=0.37",
+    "sqlalchemy>=2.0.36",
+    "alembic>=1.14",
+    "psycopg[binary]>=3.2",
+    "pydantic>=2.10",
+    "pydantic-settings>=2.7",
+    "redis>=5.2",
+    "httpx>=0.28",
+    "anthropic>=0.40",
+    # OpenAI-protocol client, used for NVIDIA's build API. Both SDKs are
+    # imported lazily, so a deployment using one does not pay for the other.
+    "openai>=1.60",
+    "python-multipart>=0.0.20",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.25",
+    "ruff>=0.8",
+]
+# Browser discovery. Kept optional deliberately: it pulls a ~400MB browser
+# download, and the API must boot on a host that has never seen a browser.
+# `api/connectors/workday/browser.py` imports Playwright lazily and reports the
+# surface as unavailable when it is absent, so this extra is only needed where
+# discovery actually runs.
+browser = [
+    "playwright>=1.49",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+# The exploration scripts embed JavaScript evaluated in the browser. Wrapping
+# those strings to satisfy a Python line limit makes the JS harder to read for
+# no benefit — nothing imports these, they are run by hand.
+"scripts/*.py" = ["E501"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+# The domain models TestPlan/TestCase/TestRun/TestEnvironment are STLC
+# entities, not test classes. Narrowing collection to `Test*` *functions* stops
+# pytest trying to instantiate them and warning on every run.
+python_classes = []
